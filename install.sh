@@ -5,7 +5,7 @@ set -euo pipefail
 # This file is safe to run from curl/bash and does not require cloning the repo.
 
 RELEASE_REPO="${ADAMAI_RELEASE_REPO:-KingMinerThailand/adamai-release}"
-DEFAULT_RELEASE_URL="https://raw.githubusercontent.com/${RELEASE_REPO}/main/adamai-local-beta.tgz"
+DEFAULT_RELEASE_URL="https://github.com/${RELEASE_REPO}/releases/latest/download/adamai-local-beta.tgz"
 RELEASE_URL="${ADAMAI_RELEASE_URL:-$DEFAULT_RELEASE_URL}"
 INSTALL_DIR="${ADAMAI_INSTALL_DIR:-$HOME/AdamAI}"
 INSTALL_PROFILE="${ADAMAI_INSTALL_PROFILE:-starter}"

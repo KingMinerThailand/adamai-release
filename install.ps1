@@ -11,7 +11,7 @@ if (-not $ReleaseRepo) {
   $ReleaseRepo = "KingMinerThailand/adamai-release"
 }
 if (-not $ReleaseUrl) {
-  $ReleaseUrl = "https://raw.githubusercontent.com/$ReleaseRepo/main/adamai-local-beta.tgz"
+  $ReleaseUrl = "https://github.com/$ReleaseRepo/releases/latest/download/adamai-local-beta.tgz"
 }
 if (-not $InstallDir) {
   $InstallDir = Join-Path $HOME "AdamAI"
