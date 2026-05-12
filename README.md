@@ -11,5 +11,5 @@ curl -fsSL "https://raw.githubusercontent.com/KingMinerThailand/adamai-release/m
 SHA-256:
 
 ```text
-a2b2d883761609d0a0b642e5cb71e77a058f01f54344852fb11818edf8907613  adamai-local-beta.tgz
+652377d9e00ebabc32efcddc7eb0aac63fd1aff5c1d3da7644298bd194d3bb2a  adamai-local-beta.tgz
 ```
