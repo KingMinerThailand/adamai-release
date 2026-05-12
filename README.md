@@ -16,3 +16,5 @@ d9ebaab9d2e03c13b01e1b868efc29c043641602b81b3652c5e2da07f48e5acc  adamai-local-b
 
 Release packages are published as GitHub Release assets, not committed to git,
 so package size can grow past GitHub's 50 MiB repository warning threshold.
+If the archive grows beyond GitHub Release asset limits, publish it to object
+storage/CDN instead and run the installer with `ADAMAI_RELEASE_URL=<package-url>`.
