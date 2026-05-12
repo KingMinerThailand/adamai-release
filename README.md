@@ -11,7 +11,7 @@ curl -fsSL "https://raw.githubusercontent.com/KingMinerThailand/adamai-release/m
 SHA-256:
 
 ```text
-d9ebaab9d2e03c13b01e1b868efc29c043641602b81b3652c5e2da07f48e5acc  adamai-local-beta.tgz
+43d59ac4f691955b7d1276e67d5173ec3d3d60a742ff9f3620afc3142a55c437  adamai-local-beta.tgz
 ```
 
 Release packages are published as GitHub Release assets, not committed to git,
