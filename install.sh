@@ -37,6 +37,7 @@ echo "Profile: $INSTALL_PROFILE"
 echo
 
 curl -fsSL --proto '=https' --tlsv1.2 "$RELEASE_URL" -o "$TMP_FILE"
+rm -rf "$INSTALL_DIR/command-hub/public/data/growth"
 tar -xzf "$TMP_FILE" -C "$INSTALL_DIR" --strip-components=1
 rm -f "$TMP_FILE"
 

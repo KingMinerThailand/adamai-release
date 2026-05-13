@@ -37,6 +37,10 @@ Write-Host "Profile: $InstallProfile"
 Write-Host ""
 
 Invoke-WebRequest -Uri $ReleaseUrl -OutFile $tmp
+$growthDir = Join-Path $InstallDir "command-hub/public/data/growth"
+if (Test-Path $growthDir) {
+  Remove-Item $growthDir -Recurse -Force
+}
 tar -xzf $tmp -C $InstallDir --strip-components=1
 Remove-Item $tmp -Force
 
