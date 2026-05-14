@@ -43,6 +43,30 @@ rm -f "$TMP_FILE"
 
 cd "$INSTALL_DIR"
 npm run install:local -- --yes --profile="$INSTALL_PROFILE"
+npm run runtime:protect -- --force
+
+node <<'NODE'
+const crypto = require("crypto");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+
+const target = path.resolve(process.cwd());
+const manifest = path.join(target, "ADAMAI-RUNTIME-MANIFEST.json");
+if (!fs.existsSync(manifest)) process.exit(0);
+
+const sha256File = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+const id = crypto.createHash("sha256").update(target).digest("hex").slice(0, 24);
+const stateFile = path.join(os.homedir(), ".adamai", "installations", `${id}.json`);
+fs.mkdirSync(path.dirname(stateFile), { recursive: true });
+fs.writeFileSync(stateFile, `${JSON.stringify({
+  target,
+  manifest: "ADAMAI-RUNTIME-MANIFEST.json",
+  manifest_sha256: sha256File(manifest),
+  recorded_at: new Date().toISOString(),
+  cli_version: "direct-installer",
+}, null, 2)}\n`, { mode: 0o600 });
+NODE
 
 echo
 echo "Running AdamAI doctor..."
