@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-d13537caafc2517f54fda950083ac9e0d2d60f2b2a3f2d74a502fdc9cd66b785  adamai-local-beta.tgz
+0d21198293ee0d88df5c385308232bb9b6d920ad951f464a926bf1407d3c803a  adamai-local-beta.tgz
 ```
 
 This public repository contains only installer files. AdamAI runtime packages are
