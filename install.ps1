@@ -20,7 +20,102 @@ if (-not $InstallProfile) {
   $InstallProfile = "starter"
 }
 
-foreach ($cmd in @("node", "npm", "tar")) {
+$NodeMajor = if ($env:ADAMAI_NODE_MAJOR) { $env:ADAMAI_NODE_MAJOR } else { "24" }
+$NodeHome = if ($env:ADAMAI_NODE_HOME) { $env:ADAMAI_NODE_HOME } else { Join-Path $HOME ".adamai/node-v$NodeMajor" }
+
+function Get-NodeMajor {
+  try {
+    $v = node -p "Number(process.versions.node.split('.')[0])" 2>$null
+    return [int]$v
+  } catch {
+    return 0
+  }
+}
+
+function Test-WorkingNode {
+  return ((Get-Command node -ErrorAction SilentlyContinue) -and
+          (Get-Command npm -ErrorAction SilentlyContinue) -and
+          ((Get-NodeMajor) -ge 18))
+}
+
+function Add-NodePath {
+  if (-not ($env:PATH -split ';' | Where-Object { $_ -eq $NodeHome })) {
+    $env:PATH = "$NodeHome;$env:PATH"
+  }
+  $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+  if (-not $userPath) { $userPath = "" }
+  if (-not ($userPath -split ';' | Where-Object { $_ -eq $NodeHome })) {
+    $newPath = if ($userPath) { "$NodeHome;$userPath" } else { $NodeHome }
+    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+    Write-Host "Added Node.js to the user PATH."
+  }
+}
+
+function Install-PortableNode {
+  $archRaw = $env:PROCESSOR_ARCHITECTURE
+  if (-not $archRaw -and $IsMacOS) { $archRaw = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString() }
+  switch -Regex ($archRaw) {
+    "ARM64|Arm64" { $arch = "arm64"; break }
+    "AMD64|x64|X64" { $arch = "x64"; break }
+    default { throw "Unsupported CPU for automatic Node.js install: $archRaw" }
+  }
+
+  Write-Host "Node.js 18+ was not found. Installing portable Node.js $NodeMajor LTS for AdamAI..."
+  $sumsUrl = "https://nodejs.org/dist/latest-v${NodeMajor}.x/SHASUMS256.txt"
+  $sums = (Invoke-WebRequest -Uri $sumsUrl).Content -split "`n"
+  $line = $sums | Where-Object { $_ -match "node-v[\d.]+-win-$arch\.zip$" } | Select-Object -First 1
+  if (-not $line) {
+    throw "Could not find Node.js $NodeMajor LTS binary for win-$arch."
+  }
+  $parts = $line.Trim() -split "\s+"
+  $expected = $parts[0].ToLowerInvariant()
+  $fileName = $parts[1]
+  $zipUrl = "https://nodejs.org/dist/latest-v${NodeMajor}.x/$fileName"
+  $tmpNode = Join-Path ([System.IO.Path]::GetTempPath()) ("adamai-node-" + [System.Guid]::NewGuid())
+  $zip = Join-Path $tmpNode $fileName
+  $extract = Join-Path $tmpNode "extract"
+
+  New-Item -ItemType Directory -Force -Path $tmpNode, $extract | Out-Null
+  try {
+    Invoke-WebRequest -Uri $zipUrl -OutFile $zip
+    $actual = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLowerInvariant()
+    if ($actual -ne $expected) {
+      throw "Node.js download checksum mismatch."
+    }
+
+    if (Test-Path $NodeHome) {
+      Remove-Item $NodeHome -Recurse -Force
+    }
+    New-Item -ItemType Directory -Force -Path $NodeHome | Out-Null
+    Expand-Archive -Path $zip -DestinationPath $extract -Force
+    $inner = Get-ChildItem $extract -Directory | Select-Object -First 1
+    if (-not $inner) {
+      throw "Node.js archive did not contain a runtime folder."
+    }
+    Copy-Item -Path (Join-Path $inner.FullName "*") -Destination $NodeHome -Recurse -Force
+    Add-NodePath
+    Write-Host "Installed $(node -v) at $NodeHome"
+  } finally {
+    if (Test-Path $tmpNode) {
+      Remove-Item $tmpNode -Recurse -Force -ErrorAction SilentlyContinue
+    }
+  }
+}
+
+function Ensure-Node {
+  if (Test-WorkingNode) {
+    Write-Host "Using Node.js $(node -v) and npm $(npm -v)"
+    return
+  }
+  Install-PortableNode
+  if (-not (Test-WorkingNode)) {
+    throw "Node.js install did not produce a working node/npm command."
+  }
+}
+
+Ensure-Node
+
+foreach ($cmd in @("tar")) {
   if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
     throw "Missing dependency: $cmd"
   }
@@ -94,6 +189,9 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host ""
 Write-Host "AdamAI installed."
 Write-Host "Start with: cd `"$InstallDir`"; npm run start:local"
+if (Test-Path $NodeHome) {
+  Write-Host "Node path:  $NodeHome"
+}
 Write-Host "Open Hub:   http://127.0.0.1:3200"
 if ($InstallProfile -eq "automation") {
   Write-Host "Open n8n:   http://127.0.0.1:5678 or http://127.0.0.1:3200/n8n"

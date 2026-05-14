@@ -2,18 +2,28 @@
 
 Public installer for AdamAI local beta.
 
-Recommended install:
+Recommended install when Node.js/npm is already installed:
 
 ```bash
 npm install -g adamai-cli
 adamai install
+adamai start
 ```
 
-Direct installer:
+Bootstrap install for users without Node.js/npm:
 
 ```bash
 curl -fsSL "https://raw.githubusercontent.com/KingMinerThailand/adamai-release/main/install.sh" | bash
 ```
+
+Windows PowerShell:
+
+```powershell
+irm "https://raw.githubusercontent.com/KingMinerThailand/adamai-release/main/install.ps1" | iex
+```
+
+The bootstrap installers install portable Node.js 24 LTS under the user's home
+folder when Node.js 18+ and npm are not already available.
 
 SHA-256:
 
