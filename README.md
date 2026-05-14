@@ -18,7 +18,7 @@ curl -fsSL "https://raw.githubusercontent.com/KingMinerThailand/adamai-release/m
 SHA-256:
 
 ```text
-7452b3662ffe4d52a6f4970fe9b966a9f67aff29950f5ea83c2d40db05b7794a  adamai-local-beta.tgz
+32cb134afd3b90a8c33bc8292532356a1731ef044388cdbcd13221e4df296d99  adamai-local-beta.tgz
 ```
 
 This public repository contains only installer files. AdamAI runtime packages are
