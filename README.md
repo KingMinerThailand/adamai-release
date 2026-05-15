@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-7d020fde85381da416dff6c2bf823f16499ca4aed33c0c0d96564116096a123c  adamai-local-beta.tgz
+932636c7f7b93d17afb90853e74f316e4df787688cefab9a5183f187a7004346  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -47,6 +47,12 @@ composer.
 The organization dispatch flow now validates the full 192-agent management
 graph, routes Gaming work through the registry-defined `worldbuild` entry point,
 and attaches coordination briefings/worktree isolation to multi-agent cascades.
+
+The Start Agent planner now recognizes game DevOps/CI readiness prompts as a
+Gaming workflow. Adam selects CTO -> Game Director -> Technical Director ->
+specialist/QA as the team, but dispatches the first runnable target to
+`worldbuild` so the cascade follows the management chain instead of fanning out
+directly to specialists.
 
 This public repository contains only installer files. AdamAI runtime packages are
 published as GitHub Release assets, not committed to git, so package size can
