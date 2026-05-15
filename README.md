@@ -28,13 +28,17 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-5027fe742be223c17612d70d9ab90449bfa54aff4a1152ec28c1dd739056a280  adamai-local-beta.tgz
+143dbfa08deb319d65fc3afe1c68312154f717c42d1291648b71ef495402d35b  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
 If an update is available, users should open Terminal and run `adamai update`.
 After updating, the banner turns green and reports the installed version as
 current.
+
+Start Agent now opens `/adamai.html`, a command-first surface where Adam plans
+the team, tools, and MCP/plugins before dispatching work. The legacy
+`/startagent.html` remains packaged for future reuse.
 
 This public repository contains only installer files. AdamAI runtime packages are
 published as GitHub Release assets, not committed to git, so package size can
