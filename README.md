@@ -28,8 +28,13 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-09d8487c19c348d370a7fd3a07609a884519adf32e800d7d7ac71a9409d15303  adamai-local-beta.tgz
+66d54521507f74b5787e7bf2899e5925251b240553ca08082aeb2679017927ff  adamai-local-beta.tgz
 ```
+
+The Start Agent page checks the latest release asset and shows a status banner.
+If an update is available, users should open Terminal and run `adamai update`.
+After updating, the banner turns green and reports the installed version as
+current.
 
 This public repository contains only installer files. AdamAI runtime packages are
 published as GitHub Release assets, not committed to git, so package size can
