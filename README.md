@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-20687f57b34bf848fe56904dcdf7360580a00b72c6c9b419a189c37227908f33  adamai-local-beta.tgz
+83afba698feefca9ae5f90a974e29eb05f25189a60a08aa8cad18d2319d971dc  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
