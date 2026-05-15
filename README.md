@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-10161ddac8848e42e44d719bf16781506ccd8456dc979a1485b1d3781a3397ec  adamai-local-beta.tgz
+391d28a4706ceeb93c139a3247cb641ac311b9d0292ba3418d908f675bbb6c38  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -43,6 +43,10 @@ the team, tools, and MCP/plugins before dispatching work. The legacy
 The `/adamai.html` command surface header now keeps only the update-status badge
 visible, so the old title/version card no longer takes space above the command
 composer.
+
+The organization dispatch flow now validates the full 192-agent management
+graph, routes Gaming work through the registry-defined `worldbuild` entry point,
+and attaches coordination briefings/worktree isolation to multi-agent cascades.
 
 This public repository contains only installer files. AdamAI runtime packages are
 published as GitHub Release assets, not committed to git, so package size can
