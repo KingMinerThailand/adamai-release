@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-932636c7f7b93d17afb90853e74f316e4df787688cefab9a5183f187a7004346  adamai-local-beta.tgz
+9c4b747d50e91d0e974a6b8424a39265d31e212250286e310a5b5c5f32dadaec  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -47,6 +47,12 @@ composer.
 The organization dispatch flow now validates the full 192-agent management
 graph, routes Gaming work through the registry-defined `worldbuild` entry point,
 and attaches coordination briefings/worktree isolation to multi-agent cascades.
+
+AdamAI Hub now includes an OpenDesign project bridge at `/opendesign.html` and
+`/api/opendesign/*`. When the local project exists at `projects/opendesign`,
+AdamAI can install dependencies, start, stop, restart, inspect status, and embed
+the OpenDesign web app while keeping the OpenDesign runtime under the AdamAI
+namespace.
 
 The Start Agent planner now recognizes game DevOps/CI readiness prompts as a
 Gaming workflow. Adam selects CTO -> Game Director -> Technical Director ->
