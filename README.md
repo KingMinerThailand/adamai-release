@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-c40b0f74f9f01d13508e27811ad74a418fffc718c084572f688ecdb7c24b6879  adamai-local-beta.tgz
+eb460532ac616efd1451883d005c0c8ae5e2cf99b17efd3dff1033fce3c2c458  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -48,6 +48,11 @@ AdamAI Cascade.
 The prompt-to-artifact flow builds a run packet with owner, deliverable,
 checkpoint, preferred Claude/Codex CLI guidance, target artifact workspace,
 briefing/worktree rules, and memory/report expectations before starting work.
+
+After dispatch, `/adamai.html` now switches into an AdamAI artifact workspace:
+left-side conversation with user prompt, Adam working status, checkpoint
+question, and reply composer; right-side Design Files canvas with ownership,
+deliverable, briefing, worktree/file-scope cards, and drop-zone context.
 
 The organization dispatch flow now validates the full 192-agent management
 graph, routes Gaming work through the registry-defined `worldbuild` entry point,
