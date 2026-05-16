@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-116e3d06af9af38c6a795f302b382dab91e96bfc673c487aff97ebaf0453380d  adamai-local-beta.tgz
+3383504847147dbc0ab2455ac04ac8527c31b72da3efa2589cc5b8bc05a9f380  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -57,6 +57,9 @@ namespace.
 The OpenDesign control page now keeps the embedded iframe stable during status
 polling by normalizing iframe URLs before comparison and avoiding unnecessary
 log rewrites during background refreshes.
+
+The OpenDesign control page now credits the upstream project as "Open Design by
+nexu-io" and links to the Apache-2.0 license.
 
 The Start Agent planner now recognizes game DevOps/CI readiness prompts as a
 Gaming workflow. Adam selects CTO -> Game Director -> Technical Director ->
