@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-eb460532ac616efd1451883d005c0c8ae5e2cf99b17efd3dff1033fce3c2c458  adamai-local-beta.tgz
+c54b0bc6d9fe8e8bd04aff32948b3a3358b3966a74cdfe7c203c2c981d176cb7  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -53,6 +53,12 @@ After dispatch, `/adamai.html` now switches into an AdamAI artifact workspace:
 left-side conversation with user prompt, Adam working status, checkpoint
 question, and reply composer; right-side Design Files canvas with ownership,
 deliverable, briefing, worktree/file-scope cards, and drop-zone context.
+
+Start Agent planning now applies a Smart Agent Budget before dispatch. AdamAI
+keeps the full candidate team as standby context, but launches only the active
+budget for the job size. Small web/design briefs now stay focused, for example
+`product_mgr` + `uxlab`, while larger cross-system work can escalate to a
+larger capped team when a blocker or review trigger appears.
 
 The organization dispatch flow now validates the full 192-agent management
 graph, routes Gaming work through the registry-defined `worldbuild` entry point,
