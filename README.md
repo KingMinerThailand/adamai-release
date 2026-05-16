@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-50023fe54d7e1eebfd1e7db7ae30351a0b90d6eb36779b58d8c4db185194ec37  adamai-local-beta.tgz
+8fce7c2c306cc7a5f0713c10db4b3c71256a6dc5baf39c23b26a32f1e2f9d68f  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -37,8 +37,13 @@ After updating, the banner turns green and reports the installed version as
 current.
 
 Start Agent now opens at the hub root (`/`), an AdamAI-native prompt-to-artifact
-home inspired by OpenDesign and Claude-style composer patterns. `/adamai.html`
-remains available as a compatibility URL, but the root URL is the primary entry.
+home inspired by OpenDesign and Claude-style composer patterns. The root URL is
+always the primary entry, including strict auth mode. `/adamai.html` remains
+available as a compatibility URL.
+
+Anonymous strict-auth sessions now see login-required live dispatch badges
+without protected API console noise. After login, the same page connects to the
+live AdamAI agent APIs for planning, tool context, and cascade dispatch.
 
 The legacy AdamAI side menu has moved into the prompt workspace itself. It starts
 collapsed by default, expands in-place when needed, includes Navigate, Account,
