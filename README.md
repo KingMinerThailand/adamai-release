@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-c54b0bc6d9fe8e8bd04aff32948b3a3358b3966a74cdfe7c203c2c981d176cb7  adamai-local-beta.tgz
+50023fe54d7e1eebfd1e7db7ae30351a0b90d6eb36779b58d8c4db185194ec37  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -36,10 +36,18 @@ If an update is available, users should open Terminal and run `adamai update`.
 After updating, the banner turns green and reports the installed version as
 current.
 
-Start Agent now opens `/adamai.html`, an AdamAI-native prompt-to-artifact home
-inspired by OpenDesign and Claude-style composer patterns. The old AdamAI shared
-side menu is removed from this page; it now uses a compact page-local rail,
-centered prompt box, starter chips, file drop, and Enter-to-run behavior.
+Start Agent now opens at the hub root (`/`), an AdamAI-native prompt-to-artifact
+home inspired by OpenDesign and Claude-style composer patterns. `/adamai.html`
+remains available as a compatibility URL, but the root URL is the primary entry.
+
+The legacy AdamAI side menu has moved into the prompt workspace itself. It starts
+collapsed by default, expands in-place when needed, includes Navigate, Account,
+and Utility entries, and keeps the legacy dashboard available through
+`/index.html`.
+
+AdamAI shared navigation now points Start Agent links to `/`, and the shared
+layout colors match the prompt workspace dark theme: warm dark background,
+AdamAI orange accent, muted parchment text, and dark as the default theme.
 
 The page does not require `projects/opendesign` at runtime: it plans through
 `/api/agent-packs/plan`, loads agent tool context, and dispatches through
