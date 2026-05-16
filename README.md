@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-3383504847147dbc0ab2455ac04ac8527c31b72da3efa2589cc5b8bc05a9f380  adamai-local-beta.tgz
+45b7e30d11258f0f8ca617d1300e6fb6fa232df3c4b79f46cafe1c56783318af  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -36,13 +36,14 @@ If an update is available, users should open Terminal and run `adamai update`.
 After updating, the banner turns green and reports the installed version as
 current.
 
-Start Agent now opens `/adamai.html`, a command-first surface where Adam plans
-the team, tools, and MCP/plugins before dispatching work. The legacy
-`/startagent.html` remains packaged for future reuse.
+Start Agent now opens `/adamai.html`, an AdamAI-native prompt-to-artifact
+surface inspired by OpenDesign's composer pattern. It does not require
+`projects/opendesign` at runtime: the page plans through `/api/agent-packs/plan`,
+loads agent tool context, and dispatches through AdamAI Cascade.
 
-The `/adamai.html` command surface header now keeps only the update-status badge
-visible, so the old title/version card no longer takes space above the command
-composer.
+The prompt-to-artifact flow builds a run packet with owner, deliverable,
+checkpoint, preferred Claude/Codex CLI guidance, target artifact workspace,
+briefing/worktree rules, and memory/report expectations before starting work.
 
 The organization dispatch flow now validates the full 192-agent management
 graph, routes Gaming work through the registry-defined `worldbuild` entry point,
