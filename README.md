@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-8fce7c2c306cc7a5f0713c10db4b3c71256a6dc5baf39c23b26a32f1e2f9d68f  adamai-local-beta.tgz
+86bf95fa79f854bab5db06bae746acf8ed7445a088abe2cdd360982141298e54  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -44,6 +44,12 @@ available as a compatibility URL.
 Anonymous strict-auth sessions now see login-required live dispatch badges
 without protected API console noise. After login, the same page connects to the
 live AdamAI agent APIs for planning, tool context, and cascade dispatch.
+
+Live cascade monitoring fixes discovered from the root workspace are included:
+WorkspaceWrite agents auto-run only allowlisted tools, while DangerFullAccess
+still requires explicit autonomous mode before bypassing prompts. ReportWatch
+now waits for boss terminals to be idle before sending report notifications, so
+status updates do not interrupt active Claude/Codex tool calls.
 
 The legacy AdamAI side menu has moved into the prompt workspace itself. It starts
 collapsed by default, expands in-place when needed, includes Navigate, Account,
