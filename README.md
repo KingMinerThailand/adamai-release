@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-9c4b747d50e91d0e974a6b8424a39265d31e212250286e310a5b5c5f32dadaec  adamai-local-beta.tgz
+116e3d06af9af38c6a795f302b382dab91e96bfc673c487aff97ebaf0453380d  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -53,6 +53,10 @@ AdamAI Hub now includes an OpenDesign project bridge at `/opendesign.html` and
 AdamAI can install dependencies, start, stop, restart, inspect status, and embed
 the OpenDesign web app while keeping the OpenDesign runtime under the AdamAI
 namespace.
+
+The OpenDesign control page now keeps the embedded iframe stable during status
+polling by normalizing iframe URLs before comparison and avoiding unnecessary
+log rewrites during background refreshes.
 
 The Start Agent planner now recognizes game DevOps/CI readiness prompts as a
 Gaming workflow. Adam selects CTO -> Game Director -> Technical Director ->
