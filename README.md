@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-45b7e30d11258f0f8ca617d1300e6fb6fa232df3c4b79f46cafe1c56783318af  adamai-local-beta.tgz
+c40b0f74f9f01d13508e27811ad74a418fffc718c084572f688ecdb7c24b6879  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -36,10 +36,14 @@ If an update is available, users should open Terminal and run `adamai update`.
 After updating, the banner turns green and reports the installed version as
 current.
 
-Start Agent now opens `/adamai.html`, an AdamAI-native prompt-to-artifact
-surface inspired by OpenDesign's composer pattern. It does not require
-`projects/opendesign` at runtime: the page plans through `/api/agent-packs/plan`,
-loads agent tool context, and dispatches through AdamAI Cascade.
+Start Agent now opens `/adamai.html`, an AdamAI-native prompt-to-artifact home
+inspired by OpenDesign and Claude-style composer patterns. The old AdamAI shared
+side menu is removed from this page; it now uses a compact page-local rail,
+centered prompt box, starter chips, file drop, and Enter-to-run behavior.
+
+The page does not require `projects/opendesign` at runtime: it plans through
+`/api/agent-packs/plan`, loads agent tool context, and dispatches through
+AdamAI Cascade.
 
 The prompt-to-artifact flow builds a run packet with owner, deliverable,
 checkpoint, preferred Claude/Codex CLI guidance, target artifact workspace,
