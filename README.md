@@ -28,7 +28,7 @@ folder when Node.js 18+ and npm are not already available.
 SHA-256:
 
 ```text
-86bf95fa79f854bab5db06bae746acf8ed7445a088abe2cdd360982141298e54  adamai-local-beta.tgz
+cae8b15c245e74e1dbb00a507706b868f3a3ba111209ed65f3eed4b989f1fa4e  adamai-local-beta.tgz
 ```
 
 The Start Agent page checks the latest release asset and shows a status banner.
@@ -50,6 +50,15 @@ WorkspaceWrite agents auto-run only allowlisted tools, while DangerFullAccess
 still requires explicit autonomous mode before bypassing prompts. ReportWatch
 now waits for boss terminals to be idle before sending report notifications, so
 status updates do not interrupt active Claude/Codex tool calls.
+
+The root prompt workspace also avoids duplicate real-work launches in selective
+cascades. When Adam dispatches to a coordinator that owns downstream targets,
+the coordinator covers those descendants and the root dispatcher no longer
+launches them again, preventing child-agent interruptions during delegated work.
+
+Generated artifact monitoring now lists files from the AdamAI artifact
+workspace, shows them on the Design Files canvas, and marks the run as
+`AdamAI complete` after source plus handoff/QA files are ready.
 
 The legacy AdamAI side menu has moved into the prompt workspace itself. It starts
 collapsed by default, expands in-place when needed, includes Navigate, Account,
